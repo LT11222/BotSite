@@ -3,5 +3,7 @@ from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name="index")
+    url(r'^$', views.index, name="index"),
+    url(r'^fights$', views.fights, name="fights"),
+    url(r'^characters$', views.characters, name="characters")
 ]

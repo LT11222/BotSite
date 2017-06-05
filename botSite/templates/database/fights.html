@@ -1,0 +1,82 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'database/style.css' %}" />
+<html>
+  <head>
+    <b>Database</b>
+    <b>{{test}}</b>
+  </head>
+  <body>
+
+    <div class="pagination">
+      <span class="step-links">
+        <a href="?page={{1}}">First</a>
+        {% if queryResults.has_previous %}
+          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
+        {% else %}
+          <a href="?page={{1}}">Previous</a>
+        {% endif %}
+        <span class="current">
+          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
+        </span>
+        {% if queryResults.has_next %}
+          <a href="?page={{queryResults.next_page_number}}">Next</a>
+        {% else %}
+          <a href="?page={{end}}">Next</a>
+        {% endif %}
+        <a href="?page={{end}}">End</a>
+      </span>
+    </div>
+
+    <table>
+      <tr>
+        <th>MatchID</th>
+        <th>redName</th>
+        <th>blueName</th>
+        <th>winner</th>
+        <th>redBets</th>
+        <th>blueBets</th>
+        <!-- <th>redMuChange</th>
+        <th>blueMuChange</th>
+        <th>redSigmaChange</th>
+        <th>blueSigmaChange</th> -->
+      </tr>
+
+      {% for item in queryResults %}
+      <tr>
+        <td>{{item.matchid}}</td>
+        <td>{{item.redname}}</td>
+        <td>{{item.bluename}}</td>
+        <td>{{item.winner}}</td>
+        <td>{{item.redbets}}</td>
+        <td>{{item.bluebets}}</td>
+        <!-- <td>{{item.redmuchange}}</td>
+        <td>{{item.bluemuchange}}</td>
+        <td>{{item.redsigmachange}}</td>
+        <td>{{item.bluesigmachange}}</td> -->
+      </tr>
+      {% endfor %}
+    </table>
+
+
+    <div class="pagination">
+      <span class="step-links">
+        <a href="?page={{1}}">First</a>
+        {% if queryResults.has_previous %}
+          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
+        {% else %}
+          <a href="?page={{1}}">Previous</a>
+        {% endif %}
+        <span class="current">
+          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
+        </span>
+        {% if queryResults.has_next %}
+          <a href="?page={{queryResults.next_page_number}}">Next</a>
+        {% else %}
+          <a href="?page={{end}}">Next</a>
+        {% endif %}
+        <a href="?page={{end}}">End</a>
+
+      </span>
+    </div>
+  </body>
+</html>
