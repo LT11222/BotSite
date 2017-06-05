@@ -1,72 +1,23 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'database/style.css' %}" />
-<html>
-  <head>
-    <b>Database</b>
-    <b>{{test}}</b>
-  </head>
-  <body>
+{% extends 'database/database.html' %}
 
-    <div class="pagination">
-      <span class="step-links">
-        <a href="?page={{1}}">First</a>
-        {% if queryResults.has_previous %}
-          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
-        {% else %}
-          <a href="?page={{1}}">Previous</a>
-        {% endif %}
-        <span class="current">
-          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
-        </span>
-        {% if queryResults.has_next %}
-          <a href="?page={{queryResults.next_page_number}}">Next</a>
-        {% else %}
-          <a href="?page={{end}}">Next</a>
-        {% endif %}
-        <a href="?page={{end}}">End</a>
-      </span>
-    </div>
+{% block table %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Mu</th>
+    <th>Sigma</th>
+  </tr>
 
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Mu</th>
-        <th>Sigma</th>
-      </tr>
-
-      {% for item in queryResults %}
-      <tr>
-        <td>{{item.name}}</td>
-        <td>{{item.wins}}</td>
-        <td>{{item.losses}}</td>
-        <td>{{item.mu}}</td>
-        <td>{{item.sigma}}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-
-    <div class="pagination">
-      <span class="step-links">
-        <a href="?page={{1}}">First</a>
-        {% if queryResults.has_previous %}
-          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
-        {% else %}
-          <a href="?page={{1}}">Previous</a>
-        {% endif %}
-        <span class="current">
-          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
-        </span>
-        {% if queryResults.has_next %}
-          <a href="?page={{queryResults.next_page_number}}">Next</a>
-        {% else %}
-          <a href="?page={{queryResults.num_pages}}">Next</a>
-        {% endif %}
-        <a href="?page={{end}}">End</a>
-
-      </span>
-    </div>
-  </body>
-</html>
+  {% for item in queryResults %}
+  <tr>
+    <td>{{item.name}}</td>
+    <td>{{item.wins}}</td>
+    <td>{{item.losses}}</td>
+    <td>{{item.mu}}</td>
+    <td>{{item.sigma}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
