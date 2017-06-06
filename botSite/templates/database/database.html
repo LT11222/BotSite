@@ -1,54 +1,54 @@
+{% extends 'database/base_database.html' %}
 {% load static %}
+
+{% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'database/style.css' %}" />
-<html>
-  <head>
-    <b>Database</b>
-    <b>{{test}}</b>
-  </head>
-  <body>
+{% endblock %}
 
-    <div class="pagination">
-      <span class="step-links">
-        <a href="?page={{1}}">First</a>
-        {% if queryResults.has_previous %}
-          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
-        {% else %}
-          <a href="?page={{1}}">Previous</a>
-        {% endif %}
-        <span class="current">
-          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
-        </span>
-        {% if queryResults.has_next %}
-          <a href="?page={{queryResults.next_page_number}}">Next</a>
-        {% else %}
-          <a href="?page={{end}}">Next</a>
-        {% endif %}
-        <a href="?page={{end}}">End</a>
-      </span>
-    </div>
+{% block data %}
 
-    {% block table %}
-    {% endblock %}
+<div class="pagination">
+  <span class="step-links">
+    <a href="?page={{1}}" class="btn btn-primary" role="button">First</a>
+    {% if queryResults.has_previous %}
+      <a href="?page={{queryResults.previous_page_number}}" class="btn btn-primary" role="button">Previous</a>
+    {% else %}
+      <a href="?page={{1}}" class="btn btn-primary" role="button">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
+    </span>
+    {% if queryResults.has_next %}
+      <a href="?page={{queryResults.next_page_number}}" class="btn btn-primary" role="button">Next</a>
+    {% else %}
+      <a href="?page={{end}}" class="btn btn-primary" role="button">Next</a>
+    {% endif %}
+    <a href="?page={{end}}" class="btn btn-primary" role="button">End</a>
+  </span>
+</div>
 
-    <div class="pagination">
-      <span class="step-links">
-        <a href="?page={{1}}">First</a>
-        {% if queryResults.has_previous %}
-          <a href="?page={{queryResults.previous_page_number}}">Previous</a>
-        {% else %}
-          <a href="?page={{1}}">Previous</a>
-        {% endif %}
-        <span class="current">
-          Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
-        </span>
-        {% if queryResults.has_next %}
-          <a href="?page={{queryResults.next_page_number}}">Next</a>
-        {% else %}
-          <a href="?page={{end}}">Next</a>
-        {% endif %}
-        <a href="?page={{end}}">End</a>
+{% block table %}
+{% endblock %}
 
-      </span>
-    </div>
-  </body>
-</html>
+<div class="pagination">
+  <span class="step-links">
+    <a href="?page={{1}}" class="btn btn-primary" role="button">First</a>
+    {% if queryResults.has_previous %}
+      <a href="?page={{queryResults.previous_page_number}}" class="btn btn-primary" role="button">Previous</a>
+    {% else %}
+      <a href="?page={{1}}" class="btn btn-primary" role="button">Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{queryResults.number}} of {{queryResults.paginator.num_pages}}.
+    </span>
+    {% if queryResults.has_next %}
+      <a href="?page={{queryResults.next_page_number}}" class="btn btn-primary" role="button">Next</a>
+    {% else %}
+      <a href="?page={{end}}" class="btn btn-primary" role="button">Next</a>
+    {% endif %}
+    <a href="?page={{end}}" class="btn btn-primary" role="button">End</a>
+
+  </span>
+</div>
+
+{% endblock %}

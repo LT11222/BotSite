@@ -1,16 +1,13 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'database/style.css' %}" />
-<html>
-  <head>
-    <b>Database</b>
-    <b>{{test}}</b>
-  </head>
-  <body>
+{% extends 'database/base_database.html' %}
+  {% block content %}
+    <div>
+      Database
+    </div>
+
     <div id="urls">
       <ul style="list-style-type:none;padding-left:0">
         <li><a href='{% url 'fights' %}'>Fights</a></li>
         <li><a href='{% url 'characters' %}'>Characters</a></li>
       </ul>
     </div>
-  </body>
-</html>
+  {% endblock %}
